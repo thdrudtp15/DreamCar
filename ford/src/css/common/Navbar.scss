@@ -72,13 +72,13 @@
 .side-bar {
     position: fixed;
     right: 0px;
-    width: 476px;
+    width: 486px;
     height: 100%;
     top: 0px;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(30px);
     transition: all 1s;
-    transform: translateX(476px);
+    transform: translateX(486px);
 }
 .sidebar-open {
     transform: translateX(0px);
