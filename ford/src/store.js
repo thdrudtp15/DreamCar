@@ -1,15 +1,23 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-let navHeight = createSlice({
-  name: "navHeight",
+let sidebarOpen = createSlice({
+  name: "sidebarOpen",
   initialState: "",
   reducers: {
-    setNavHeight() {},
+    setNavStatus(state, req) {
+      if (req.payload === "close") {
+        return "";
+      } else {
+        return "sidebar-open";
+      }
+    },
   },
 });
 
 export default configureStore({
   reducer: {
-    user: navHeight.reducer,
+    sidebarOpen: sidebarOpen.reducer,
   },
 });
+
+export let { setNavStatus } = sidebarOpen.actions;

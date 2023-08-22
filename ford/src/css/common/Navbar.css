@@ -10,7 +10,7 @@
 .nav-bar {
   height: 128px;
   transition: all 1s;
-  background: rgba(0, 0, 0, 0.1);
+  background: transparent;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding-left: 200px;
+  padding-left: 300px;
 }
 
 .nav-btn {
@@ -45,6 +45,8 @@
   text-align: center;
 }
 .nav-btn span {
+  font-weight: 600;
+  color: white;
   cursor: pointer;
 }
 
@@ -58,28 +60,147 @@
   align-items: center;
 }
 .nav-minIcon span {
+  color: #eee;
+  font-size: 23px;
   cursor: pointer;
 }
 
-.nav2-bar {
+.side-bar {
   position: fixed;
   right: 0px;
-  width: 556px;
-  height: 100vh;
+  width: 476px;
+  height: 100%;
   top: 0px;
-  background: coral;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
   transition: all 1s;
-  transform: translateX(556px);
+  transform: translateX(476px);
 }
 
-.nav2-topBox {
+.sidebar-open {
+  transform: translateX(0px);
+}
+
+.side-topBox {
+  padding: 6rem 3rem;
   height: 65%;
-  background: red;
+  border-bottom: 1px solid rgb(95, 95, 95);
 }
 
-.nav2-bottomBox {
-  height: 35%;
+.side-header {
   background: blue;
+  margin-bottom: 50px;
+}
+
+.side-btn {
+  font-size: 27px;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: 500;
+  cursor: default;
+}
+
+.side-ArrowBox {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+
+.side-Arrow {
+  width: 20px;
+  height: 20px;
+  background: rgb(153, 153, 153);
+  border-radius: 20px;
+  color: rgb(184, 184, 184);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-btn:hover .side-Arrow {
+  background: white;
+  color: black;
+}
+
+.side-lang {
+  color: white;
+  float: left;
+}
+
+.side-cancel {
+  float: right;
+}
+.side-cancel span {
+  font-size: 23px;
+  color: silver;
+  cursor: pointer;
+}
+
+.side-bottomBox {
+  height: 35%;
+  padding: 1rem 3rem;
+}
+
+.side-btTop {
+  height: 70%;
+}
+
+.side-btBt {
+  height: 30%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.site {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 40px;
+  font-size: 20px;
+  color: rgb(202, 202, 202);
+  cursor: default;
+  text-decoration: none;
+}
+
+.link-icon {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.site:hover .link-icon {
+  transition: all 0.5s;
+  transform: translateX(20px);
+}
+
+.sns {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snsBox {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background: gray;
+  font-size: 25px;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snsBox:hover {
+  background: white;
+  color: black;
 }
 
 @media screen and (max-width: 1024px) {
