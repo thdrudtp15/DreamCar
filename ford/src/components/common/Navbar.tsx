@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, useEffect } from "react";
 import "../../css/common/Navbar.css"
 import logo from "../../Img/mustangLogo.png";
 import { FaBars } from 'react-icons/fa';
@@ -12,21 +12,45 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 //사이드바 오픈 세터함수
-import { setNavStatus } from "../../store";
+import { setNavStatus,setNavbar } from "../../store";
+
 
 
 
 function Navbar(){
-    
     const dispatch = useDispatch();
 
+    let navStatus = useSelector((state : any)=> state.navbar)
+    let lastScroll = 0;
 
+
+    useEffect(()=>{
+        function scrollEvnt(){
+            let now = window.scrollY;
+            if(now > lastScroll){
+                dispatch(setNavbar("nav-barDown"));
+            }else if(now < lastScroll){
+                if(now === 0) {
+                    dispatch(setNavbar(""));
+                }else
+                dispatch(setNavbar("nav-barUp"))
+            }
+            
+            //0이 되면 초기화
+            lastScroll = now <= 0 ? 0 : now;
+        }
+
+        window.addEventListener("scroll",scrollEvnt);
+        return ()=> window.removeEventListener("scroll",scrollEvnt);
+
+    },[])
     const barArr : string[] = ["AboutUs", "History" , "News"];
 
-    return <div className="nav-wrap">
+    return <div className={`nav-wrap ${navStatus}`}>
             <header className="nav-bar">
                 <div className="nav-logo">
-                    <img src={logo} alt=""></img>
+                    {/* <img src={logo} alt=""></img> */}
+                    <span style={{fontSize: "40px",fontWeight:"bold",transform : "skew(-25deg)"}}>FORD</span>
                 </div>
                 <div className="nav-controlBox">
                     <Bar arr={barArr}/>
@@ -103,7 +127,9 @@ function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
             <div className="side-bottomBox">
                 <div className="side-btTop">
                     {siteArr.map((a,i)=><a className="site" key={i} href={`${a.path}`}>{a.title}
-                                            <span className="link-icon"><BiLinkExternal/></span>
+                                            <span className="link-icon">
+                                                <BiLinkExternal/>
+                                            </span>
                                         </a>)}
                 </div>
                 <div className="side-btBt">

@@ -1,0 +1,39 @@
+.Im-wrap {
+    width: 100%;
+    height: 1400px;
+    // border-top: 1px solid;
+    // border-bottom: 1px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.Im-area {
+   transform: translate3d(0px, 0%, 0px);
+    // background: red;
+}
+
+
+
+.Im-imgWrap {
+    //위의 에어리어가 내려오면서 이미지가 왼쪽으로 들어온다
+    //width가 최종적으로 100%가 됨.
+    position: relative;
+    top:0;
+    left: 0;
+    margin-left: auto;
+    margin-right: 0;
+    overflow: hidden;
+    width: 60%;
+}
+
+.Im-imgCont {
+    //스케일 수치가 달라져야 함 Ex) 1.5 -> 1.1
+    transform: scale(1,1);
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

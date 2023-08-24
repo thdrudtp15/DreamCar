@@ -14,10 +14,22 @@ let sidebarOpen = createSlice({
   },
 });
 
+let navBarStatus = createSlice({
+  name: "navBarStatus",
+  initialState: "",
+  reducers: {
+    setNavbar(state, req) {
+      return req.payload;
+    },
+  },
+});
+
 export default configureStore({
   reducer: {
     sidebarOpen: sidebarOpen.reducer,
+    navbar: navBarStatus.reducer,
   },
 });
 
 export let { setNavStatus } = sidebarOpen.actions;
+export let { setNavbar } = navBarStatus.actions;
