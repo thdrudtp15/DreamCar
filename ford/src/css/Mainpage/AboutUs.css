@@ -1,8 +1,13 @@
 .Au-wrap {
   width: 100%;
-  height: 700px;
+  height: 750px;
   padding-top: 100px;
-  padding-left: 300px;
+  padding-left: 250px;
+}
+
+.Au-textContainer {
+  width: 650px;
+  height: 450px;
 }
 
 .Au-subject {
@@ -18,6 +23,10 @@
 @media screen and (max-width: 556px) {
   .Au-wrap {
     padding: 100px 20px;
+    height: 600px;
+  }
+  .Au-textContainer {
+    width: 446px;
   }
   .Au-subject {
     font-size: 30px;

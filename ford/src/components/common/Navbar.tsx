@@ -11,16 +11,15 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import store from "../../store";
+
 //사이드바 오픈 세터함수
 import { setNavStatus,setNavbar } from "../../store";
 
 
-
-
 function Navbar(){
     const dispatch = useDispatch();
-
-    let navStatus = useSelector((state : any)=> state.navbar)
+    let navStatus = useSelector((state : ReturnType<typeof store.getState> )=> state.navbar)
     let lastScroll = 0;
 
 
@@ -82,7 +81,15 @@ function Bar ({arr} : { arr : string[]}){
 
 function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
 
-    const sidebarSatus :any  = useSelector((state: any) => state.sidebarOpen)
+
+    const sidebarSatus  = useSelector((state: any) => state.sidebarOpen)
+    
+
+    if(sidebarSatus === "sidebar-open"){
+        document.body.style.overflow = "hidden";
+    }else {
+        document.body.style.overflow = "visible";
+    }
 
 
     type snsArrType = {icon : React.ReactElement ,path : string}[];
