@@ -5,6 +5,7 @@ import AboutUs from '../components/Mainpage/AboutUs';
 import ImgMotion from '../components/Mainpage/ImgMotion';
 import History from '../components/Mainpage/History';
 import Timeline from '../components/Mainpage/Timeline';
+import Footer from '../components/common/Footer';
 
 
 function MainPage () {
@@ -12,10 +13,10 @@ function MainPage () {
         <Navbar />
         <FirstBlock />
         <AboutUs />
-        <ImgMotion />
+        {/* <ImgMotion /> */}
         <History/>
         <Timeline />
-        <div style={{height : "1200px",background : "red"}}></div>
+        <Footer />
     </div>
 }
 

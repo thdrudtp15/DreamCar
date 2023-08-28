@@ -7,6 +7,9 @@ import {IoMdClose} from 'react-icons/io';
 import {AiOutlineInstagram,AiOutlineYoutube} from 'react-icons/ai';
 import {BiLogoFacebook,BiLinkExternal} from 'react-icons/bi';
 
+import siteArr from "./DermyData/siteArr";
+import snsArr from "./DermyData/snsArr";
+
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -90,18 +93,6 @@ function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
     }else {
         document.body.style.overflow = "visible";
     }
-
-
-    type snsArrType = {icon : React.ReactElement ,path : string}[];
-    type siteArrType = {title : string, path : string}[]
-
-    const snsArr : snsArrType= [{icon : <AiOutlineInstagram/>, path : "https://www.instagram.com/ford_mustang.usa/" },
-                                { icon : <BiLogoFacebook/> , path : "https://www.facebook.com/fordmustang/"},
-                                { icon : <AiOutlineYoutube/> , path : "https://www.youtube.com/@ford"}]
-
-    const siteArr : siteArrType = [{title : "Ford", path :"https://www.ford.com/"},
-                                   {title : "Ford Perfomance", path : "https://performance.ford.com/"},
-                                   { title : "Shelby" , path : "https://www.shelby.com/en-us/" }] 
 
     return(
         <div className={`side-bar ${sidebarSatus}`}>

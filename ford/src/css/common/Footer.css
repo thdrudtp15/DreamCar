@@ -1,0 +1,101 @@
+.ft-wrap {
+  width: 100%;
+  height: 450px;
+  background: black;
+  padding: 5rem min(4.17vw, 8rem) 3rem;
+}
+
+.ft-top {
+  height: 50%;
+}
+.ft-top span {
+  font-size: 1.6rem;
+  color: white;
+  margin-right: 30px;
+}
+
+.ft-bottom {
+  height: 50%;
+}
+
+.ft-btTop {
+  height: 35%;
+  border-bottom: 1px solid silver;
+  width: 100%;
+  display: flex;
+}
+
+.ft-btBt {
+  height: 65%;
+  width: 100%;
+  display: flex;
+}
+
+.privacy {
+  width: 70%;
+  height: 100%;
+  padding: 15px 0px;
+}
+
+.copywrite {
+  width: 30%;
+  height: 100%;
+  color: silver;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  font-size: 0.75rem;
+}
+
+.familySiteBox {
+  width: 70%;
+  height: 100%;
+  font-size: 0.75rem;
+  color: silver;
+}
+
+.familySite {
+  font-weight: 0;
+  padding: 0px 10px;
+  text-decoration: none;
+  color: silver;
+}
+
+.social {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.socialCircle {
+  color: silver;
+  width: 35px;
+  height: 35px;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.socialCircle:hover {
+  background: white;
+  color: black;
+}
+
+.prcontent {
+  font-weight: 0;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  color: silver;
+}
+
+@media screen and (max-width: 556px) {
+  .copywrite {
+    font-size: 0.5rem;
+  }
+}/*# sourceMappingURL=Footer.css.map */

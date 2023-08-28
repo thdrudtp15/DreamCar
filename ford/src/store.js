@@ -44,12 +44,23 @@ let slideImg = createSlice({
   },
 });
 
+let slideWidth = createSlice({
+  name: "slideWidth",
+  initialState: 0,
+  reducers: {
+    sliding(state, x) {
+      return x.payload;
+    },
+  },
+});
+
 export default configureStore({
   reducer: {
     sidebarOpen: sidebarOpen.reducer,
     navbar: navBarStatus.reducer,
     slideContent: slideContent.reducer,
     slideImg: slideImg.reducer,
+    slideWidth: slideWidth.reducer,
   },
 });
 
@@ -57,3 +68,4 @@ export let { setNavStatus } = sidebarOpen.actions;
 export let { setNavbar } = navBarStatus.actions;
 export let { changeContent } = slideContent.actions;
 export let { changeImg } = slideImg.actions;
+export let { sliding } = slideWidth.actions;

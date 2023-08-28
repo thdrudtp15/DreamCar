@@ -23,7 +23,7 @@
 
 .Tl-slideBtn {
   cursor: pointer;
-  width: 200px;
+  width: 300px;
   height: 100%;
   border-bottom: 1px solid rgb(187, 187, 187);
   display: flex;
@@ -74,18 +74,21 @@
 }
 
 @media screen and (max-width: 556px) {
-  .Tl-slideBox {
-    overflow: scroll;
+  .Tl-slide {
+    width: 1120px;
   }
   .Tl-slideBtn {
-    width: 150px;
-    font-size: 17px;
+    width: 160px;
+    font-size: 0.75rem;
   }
   .Tl-leftContent {
     width: 100%;
   }
   .Tl-rightContent {
     width: 100%;
+  }
+  .Tl-content {
+    margin-top: 30px;
   }
   .Tl-modelTime {
     font-size: 20px;
@@ -106,9 +109,10 @@
 }
 
 .R {
-  right: 70px;
+  right: 15px;
 }
 
 .L {
-  left: 70px;
+  left: 15px;
+  transform: rotate(180deg);
 }/*# sourceMappingURL=Timeline.css.map */
