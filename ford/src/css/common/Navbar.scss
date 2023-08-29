@@ -24,15 +24,6 @@
     @include flex(center,center )
 }
 
-.nav-barUp {
-    background: white;
-    border-bottom: 1px solid silver;
-    color:black;
-}
-.nav-barDown {
-    transform: translateY(-128px);
-}
-
 .nav-logo {
     height: 100%;
     width: 30%;
@@ -54,13 +45,28 @@
     padding: 5px 10px;
     min-width: 120px;
     text-align: center;
-    span {
+    a {
         font-weight: 600;
         font-size: 20px;
-        // color : white;
+        color : white;
+        text-decoration: none;
         cursor: pointer;
     }
 }
+
+.nav-barUp {
+    background: white;
+    border-bottom: 1px solid silver;
+    color:black;
+    a{
+        color :black;
+    }
+}
+.nav-barDown {
+    transform: translateY(-128px);
+}
+
+
 .nav-minIcon {
     width: 50px;
     height: 50px;
@@ -88,11 +94,11 @@
     top: 0px;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(30px);
-    transition: all 1s;
     transform: translateX(486px);
 }
 .sidebar-open {
     transform: translateX(0px);
+    transition: all 1s;
 }
 
 //=================
@@ -114,9 +120,12 @@
 .side-btn {
     font-size: 27px;
     margin-bottom: 15px;
-    color:white;
     font-weight: 500;
-    cursor: default;
+    cursor: pointer;
+        a{
+            color:white;
+            text-decoration: none;
+        }
 }
 
 .side-ArrowBox {
@@ -180,7 +189,7 @@
     @include flex(start, center );
     height: 40px;
     font-size: 20px;
-    color: rgb(202, 202, 202);
+    color: rgb(202, 202, 202) !important;
     cursor: default;
     text-decoration: none;
 }

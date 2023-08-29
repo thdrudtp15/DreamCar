@@ -30,6 +30,7 @@ function Timeline () {
     let [boxWidth, setBoxWidth] = useState(0);
     let [width, setWidth] = useState(0);
     
+    
 
 
     useEffect(()=>{
@@ -42,6 +43,7 @@ function Timeline () {
             if(Element){
                 setWidth(Element.offsetWidth);
             }
+            
         }
         window.addEventListener("resize",event);
 

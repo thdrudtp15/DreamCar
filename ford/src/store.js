@@ -54,6 +54,16 @@ let slideWidth = createSlice({
   },
 });
 
+let newsPage = createSlice({
+  name: "newsPage",
+  initialState: 0,
+  reducers: {
+    setNewsPage(state, number) {
+      return number.payload;
+    },
+  },
+});
+
 export default configureStore({
   reducer: {
     sidebarOpen: sidebarOpen.reducer,
@@ -61,6 +71,7 @@ export default configureStore({
     slideContent: slideContent.reducer,
     slideImg: slideImg.reducer,
     slideWidth: slideWidth.reducer,
+    newsPage: newsPage.reducer,
   },
 });
 
@@ -69,3 +80,4 @@ export let { setNavbar } = navBarStatus.actions;
 export let { changeContent } = slideContent.actions;
 export let { changeImg } = slideImg.actions;
 export let { sliding } = slideWidth.actions;
+export let { setNewsPage } = newsPage.actions;

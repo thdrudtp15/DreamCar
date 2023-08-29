@@ -1,17 +1,15 @@
 .Im-wrap {
-    // width: 100%;
-    height: 1400px;
-
-
-
     position: relative;
-    // overflow: hidden;
+    
 }
 
 
 .Im-area {
+    position: relative;
    transform: translate3d(0px, 0%, 0px);
-   overflow: hidden;
+//    background: red;
+margin-bottom: 350px;
+overflow: hidden;
 }
 
 
@@ -26,16 +24,29 @@
     margin-right: 0;
     overflow: hidden;
     width: 60%;
+    // height: var(649px,100vh);
     height: 100vh;
 }
 
 .Im-imgCont {
     //스케일 수치가 달라져야 함 Ex) 1.5 -> 1.1
-    transform: scale(1,1);
+    transform: scale(1.5,1.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
 
     img {
+        position : absolute;
         width: 100%;
         height: 100%;
+        right: 0;
+        bottom: 0;
+        margin-right: 0;
+        margin-left: auto;
+        //비율을 맞추는 속성
+        object-fit: cover;
     }
 }

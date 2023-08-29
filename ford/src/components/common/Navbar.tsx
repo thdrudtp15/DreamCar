@@ -28,6 +28,7 @@ function Navbar(){
 
     useEffect(()=>{
         function scrollEvnt(){
+            dispatch(setNavStatus("close"));
             let now = window.scrollY;
             if(now > lastScroll){
                 dispatch(setNavbar("nav-barDown"));
@@ -44,9 +45,10 @@ function Navbar(){
 
         window.addEventListener("scroll",scrollEvnt);
         return ()=> window.removeEventListener("scroll",scrollEvnt);
-
     },[])
-    const barArr : string[] = ["AboutUs", "History" , "News"];
+
+
+    const barArr : string[] = ["About", "History" , "News"];
 
     return <div className={`nav-wrap ${navStatus}`}>
             <header className="nav-bar">
@@ -55,9 +57,9 @@ function Navbar(){
                     <span style={{fontSize: "40px",fontWeight:"bold",transform : "skew(-25deg)"}}>FORD</span>
                 </div>
                 <div className="nav-controlBox">
-                    <Bar arr={barArr}/>
+                    <Bar arr={barArr} dispatch={dispatch}/>
                     <div className="nav-minIcon">
-                        <span onClick={()=>dispatch(setNavStatus("open"))}><FaBars/></span>
+                        <span style={{color : "#eee"}} onClick={()=>dispatch(setNavStatus("open"))}><FaBars/></span>
                     </div>
                 </div>
             </header>
@@ -68,13 +70,13 @@ function Navbar(){
 export default Navbar;
 
 
-function Bar ({arr} : { arr : string[]}){
+function Bar ({arr,dispatch} : { arr : string[], dispatch : Dispatch<any>}){
     return (
         <>
             {arr.map((a,index)=>{
                 return( 
                     <div className="nav-btn" key={index}>
-                        <span>{a}</span>
+                        <a href={`#${a}`} onClick={(()=>{dispatch(setNavbar("nav-barDown"));})}>{a}</a>
                     </div>
                 )
                 })}
@@ -87,11 +89,11 @@ function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
 
     const sidebarSatus  = useSelector((state: any) => state.sidebarOpen)
     
-
+    //사이드바 함수 정리
     if(sidebarSatus === "sidebar-open"){
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
     }else {
-        document.body.style.overflow = "visible";
+        // document.body.style.overflow = "visible";
     }
 
     return(
@@ -113,7 +115,7 @@ function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
                 </div>
                 {arr.map((a,i)=> 
                     <div className="side-btn" key={i}>
-                        <span>{a}</span>
+                        <a href={`#${a}`}>{a}</a>
                         <span className="side-ArrowBox">
                             <span className="side-Arrow">
                                 <BsArrowRightShort />

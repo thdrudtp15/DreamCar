@@ -8,10 +8,11 @@
 .ft-top {
   height: 50%;
 }
-.ft-top span {
+.ft-top a {
   font-size: 1.6rem;
   color: white;
   margin-right: 30px;
+  text-decoration: none;
 }
 
 .ft-bottom {

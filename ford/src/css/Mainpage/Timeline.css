@@ -5,7 +5,7 @@
   max-width: calc(1440px + min(8rem, 4.17vw) * 2);
   margin: 0 auto;
   padding: 1px min(8rem, 4.17vw);
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 }
 
 .Tl-slideBox {
@@ -73,13 +73,24 @@
   height: auto;
 }
 
+@media screen and (max-width: 995px) {
+  .Tl-leftContent {
+    width: 100%;
+  }
+  .Tl-rightContent {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 556px) {
+  .Tl-wrap {
+    margin-bottom: 100px;
+  }
   .Tl-slide {
     width: 1120px;
   }
   .Tl-slideBtn {
     width: 160px;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
   .Tl-leftContent {
     width: 100%;
@@ -106,6 +117,7 @@
   position: absolute;
   top: 25px;
   font-size: 25px;
+  cursor: pointer;
 }
 
 .R {

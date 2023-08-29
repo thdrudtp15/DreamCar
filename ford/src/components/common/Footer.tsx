@@ -11,9 +11,9 @@ function Footer(){
 
     return <div className="ft-wrap">
                 <div className="ft-top">
-                    <span>AboutUs</span>
-                    <span>History</span>
-                    <span>News</span>
+                    <a href="#AboutUs">AboutUs</a>
+                    <a href="#History">History</a>
+                    <a href="#News">News</a>
                 </div>
                 <div className="ft-bottom">
                     <div className="ft-btTop">
