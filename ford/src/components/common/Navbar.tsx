@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, useEffect } from "react";
 import "../../css/common/Navbar.css"
 import logo from "../../Img/mustangLogo.png";
 import { FaBars } from 'react-icons/fa';
@@ -7,31 +7,59 @@ import {IoMdClose} from 'react-icons/io';
 import {AiOutlineInstagram,AiOutlineYoutube} from 'react-icons/ai';
 import {BiLogoFacebook,BiLinkExternal} from 'react-icons/bi';
 
+import siteArr from "./DermyData/siteArr";
+import snsArr from "./DermyData/snsArr";
+
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-//사이드바 오픈 세터함수
-import { setNavStatus } from "../../store";
+import store from "../../store";
 
+//사이드바 오픈 세터함수
+import { setNavStatus,setNavbar } from "../../store";
 
 
 function Navbar(){
-    
     const dispatch = useDispatch();
+    let navStatus = useSelector((state : ReturnType<typeof store.getState> )=> state.navbar)
+    let lastScroll = 0;
 
 
-    const barArr : string[] = ["AboutUs", "History" , "News"];
+    useEffect(()=>{
+        function scrollEvnt(){
+            dispatch(setNavStatus("close"));
+            let now = window.scrollY;
+            if(now > lastScroll){
+                dispatch(setNavbar("nav-barDown"));
+            }else if(now < lastScroll){
+                if(now === 0) {
+                    dispatch(setNavbar(""));
+                }else
+                dispatch(setNavbar("nav-barUp"))
+            }
+            
+            //0이 되면 초기화
+            lastScroll = now <= 0 ? 0 : now;
+        }
 
-    return <div className="nav-wrap">
+        window.addEventListener("scroll",scrollEvnt);
+        return ()=> window.removeEventListener("scroll",scrollEvnt);
+    },[])
+
+
+    const barArr : string[] = ["About", "History" , "News"];
+
+    return <div className={`nav-wrap ${navStatus}`}>
             <header className="nav-bar">
                 <div className="nav-logo">
-                    <img src={logo} alt=""></img>
+                    {/* <img src={logo} alt=""></img> */}
+                    <span style={{fontSize: "40px",fontWeight:"bold",transform : "skew(-25deg)"}}>FORD</span>
                 </div>
                 <div className="nav-controlBox">
-                    <Bar arr={barArr}/>
+                    <Bar arr={barArr} dispatch={dispatch}/>
                     <div className="nav-minIcon">
-                        <span onClick={()=>dispatch(setNavStatus("open"))}><FaBars/></span>
+                        <span style={{color : "#eee"}} onClick={()=>dispatch(setNavStatus("open"))}><FaBars/></span>
                     </div>
                 </div>
             </header>
@@ -42,13 +70,13 @@ function Navbar(){
 export default Navbar;
 
 
-function Bar ({arr} : { arr : string[]}){
+function Bar ({arr,dispatch} : { arr : string[], dispatch : Dispatch<any>}){
     return (
         <>
             {arr.map((a,index)=>{
                 return( 
                     <div className="nav-btn" key={index}>
-                        <span>{a}</span>
+                        <a href={`#${a}`} onClick={(()=>{dispatch(setNavbar("nav-barDown"));})}>{a}</a>
                     </div>
                 )
                 })}
@@ -58,19 +86,15 @@ function Bar ({arr} : { arr : string[]}){
 
 function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
 
-    const sidebarSatus :any  = useSelector((state: any) => state.sidebarOpen)
 
-
-    type snsArrType = {icon : React.ReactElement ,path : string}[];
-    type siteArrType = {title : string, path : string}[]
-
-    const snsArr : snsArrType= [{icon : <AiOutlineInstagram/>, path : "https://www.instagram.com/ford_mustang.usa/" },
-                                { icon : <BiLogoFacebook/> , path : "https://www.facebook.com/fordmustang/"},
-                                { icon : <AiOutlineYoutube/> , path : "https://www.youtube.com/@ford"}]
-
-    const siteArr : siteArrType = [{title : "Ford", path :"https://www.ford.com/"},
-                                   {title : "Ford Perfomance", path : "https://performance.ford.com/"},
-                                   { title : "Shelby" , path : "https://www.shelby.com/en-us/" }] 
+    const sidebarSatus  = useSelector((state: any) => state.sidebarOpen)
+    
+    //사이드바 함수 정리
+    if(sidebarSatus === "sidebar-open"){
+        // document.body.style.overflow = "hidden";
+    }else {
+        // document.body.style.overflow = "visible";
+    }
 
     return(
         <div className={`side-bar ${sidebarSatus}`}>
@@ -91,7 +115,7 @@ function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
                 </div>
                 {arr.map((a,i)=> 
                     <div className="side-btn" key={i}>
-                        <span>{a}</span>
+                        <a href={`#${a}`}>{a}</a>
                         <span className="side-ArrowBox">
                             <span className="side-Arrow">
                                 <BsArrowRightShort />
@@ -103,7 +127,9 @@ function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
             <div className="side-bottomBox">
                 <div className="side-btTop">
                     {siteArr.map((a,i)=><a className="site" key={i} href={`${a.path}`}>{a.title}
-                                            <span className="link-icon"><BiLinkExternal/></span>
+                                            <span className="link-icon">
+                                                <BiLinkExternal/>
+                                            </span>
                                         </a>)}
                 </div>
                 <div className="side-btBt">
