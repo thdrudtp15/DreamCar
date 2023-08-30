@@ -121,7 +121,7 @@ function Timeline () {
                                                                         <div className="Tl-modelTime">{data.name}</div>
                                                                          {/*모델설명 */}
                                                                         {data.explanation.map((data,i)=>{
-                                                                            return <div className="Tl-explanation" key={i}>●{data}</div>
+                                                                            return <div className="Tl-explanation" key={i}>■ {data}</div>
                                                                         })
                                                                         }
                                                                     </div>
