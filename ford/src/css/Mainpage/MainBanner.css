@@ -22,6 +22,17 @@
     height: auto;
 }
 
+.Mb-img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+}
+.increaseScale {
+    transition: all 2s;
+    transform: scale(1.1);
+}
+
+
 .Mb-message {
     color:white;
     z-index: 5;

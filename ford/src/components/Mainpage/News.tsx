@@ -3,10 +3,9 @@ import { useSelector, UseSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { setNewsPage } from "../../store";
 import store from "../../store";
-import newsArr from "../Mainpage/DermyData/News";
+import newsArr from "./DummyData/News";
 
 
-import { Cheerio } from "cheerio/lib/cheerio";
 import axios from "axios";
 import { useEffect } from "react";
 

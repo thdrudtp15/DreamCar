@@ -1,5 +1,5 @@
 import "../../css/Mainpage/History.css";
-import video from "../../Img/Intro.mp4"
+import video from "../../Img/middle.mp4"
 
 function History() {
     return <div className="Ht-wrap" id="History">

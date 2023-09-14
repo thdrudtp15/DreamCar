@@ -87,18 +87,19 @@
 //==================
 
 .side-bar {
+    z-index: 15;
     position: fixed;
     right: 0px;
     width: 486px;
     height: 100%;
     top: 0px;
+    transition: all 1s;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(30px);
     transform: translateX(486px);
 }
 .sidebar-open {
     transform: translateX(0px);
-    transition: all 1s;
 }
 
 //=================

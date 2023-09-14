@@ -6,15 +6,12 @@ import {BsArrowRightShort} from 'react-icons/bs';
 import {IoMdClose} from 'react-icons/io';
 import {AiOutlineInstagram,AiOutlineYoutube} from 'react-icons/ai';
 import {BiLogoFacebook,BiLinkExternal} from 'react-icons/bi';
-
-import siteArr from "./DermyData/siteArr";
-import snsArr from "./DermyData/snsArr";
-
+import siteArr from "./DummyData/siteArr";
+import snsArr from "./DummyData/snsArr";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import store from "../../store";
 
 //사이드바 오픈 세터함수
 import { setNavStatus,setNavbar } from "../../store";
@@ -22,7 +19,7 @@ import { setNavStatus,setNavbar } from "../../store";
 
 function Navbar(){
     const dispatch = useDispatch();
-    let navStatus = useSelector((state : ReturnType<typeof store.getState> )=> state.navbar)
+    let navStatus = useSelector((state : {navbar : string} )=> state.navbar)
     let lastScroll = 0;
 
 
@@ -50,10 +47,10 @@ function Navbar(){
 
     const barArr : string[] = ["About", "History" , "News"];
 
-    return <div className={`nav-wrap ${navStatus}`}>
+    return  <div> 
+        <div className={`nav-wrap ${navStatus}`}>
             <header className="nav-bar">
                 <div className="nav-logo">
-                    {/* <img src={logo} alt=""></img> */}
                     <span style={{fontSize: "40px",fontWeight:"bold",transform : "skew(-25deg)"}}>FORD</span>
                 </div>
                 <div className="nav-controlBox">
@@ -62,8 +59,9 @@ function Navbar(){
                         <span style={{color : "#eee"}} onClick={()=>dispatch(setNavStatus("open"))}><FaBars/></span>
                     </div>
                 </div>
-            </header>
-                    <Bar2 arr={barArr} dispatch={dispatch}/>
+            </header>        
+            </div>
+            <Bar2 arr={barArr} dispatch={dispatch}/>
             </div>
 }
 
@@ -85,25 +83,13 @@ function Bar ({arr,dispatch} : { arr : string[], dispatch : Dispatch<any>}){
 }
 
 function Bar2 ({arr, dispatch} : {arr : string[]; dispatch : Dispatch<any>}) {
-
-
     const sidebarSatus  = useSelector((state: any) => state.sidebarOpen)
     
-    //사이드바 함수 정리
-    if(sidebarSatus === "sidebar-open"){
-        // document.body.style.overflow = "hidden";
-    }else {
-        // document.body.style.overflow = "visible";
-    }
-
     return(
         <div className={`side-bar ${sidebarSatus}`}>
             <div className="side-topBox">
                 <div className="side-header">
                     <div className="side-lang">
-                        <span>KOREAN</span>
-                        <span>/</span>
-                        <span style={{color : "silver"}}>ENG</span>
                     </div>
                     <div className="side-cancel">
                         <span onClick={()=>{

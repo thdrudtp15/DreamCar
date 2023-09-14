@@ -61,19 +61,29 @@
 .Tl-modelTime {
     font-size: 29px;
     font-weight: 500;
-    padding: 15px 0px;
+    margin-bottom: 5px;
 }
 .Tl-explanation {
     font-size: 1rem;
 }
 .contentContainer {
     margin-bottom: 30px;
+    padding: 15px 15px;
+    border-radius: 20px;
+    width: 450px;
+    cursor: pointer;
+}
+.selectModel {
+    background: #eee;
 }
 
 
 .modelImg {
     max-width: 100%;
     height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    
     // width: 100%;
     // height: 100%;
 }
@@ -84,6 +94,9 @@
 
 
 @media screen and (max-width : 995px) {
+    .contentContainer { 
+    width: 100%;
+    }
     .Tl-leftContent {
         width: 100%;
     }

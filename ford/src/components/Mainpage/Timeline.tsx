@@ -2,19 +2,20 @@ import "../../css/Mainpage/Timeline.css"
 import { useSelector,useDispatch } from "react-redux";
 import { changeContent,changeImg } from "../../store";
 import {MdOutlineArrowForwardIos} from "react-icons/md";
-import React, { Dispatch, useEffect,useState } from "react";
+import React, { useEffect,useState } from "react";
 import store from "../../store";
-import Array from "./DermyData/Timeline";
-import { url } from "inspector";
+import Array from "./DummyData/Timeline";
 
 import { sliding } from "../../store";
 
 function Timeline () {
     const dispatch = useDispatch();
+    let [ySize,setYSize] = useState(0);
 
     function timeSelect(x : number ) : void {
         const enableBtn : NodeList| null = document.querySelectorAll(".Tl-slideBtn");
         dispatch(changeImg(0));
+    
         if(enableBtn.length > 0){
            enableBtn.forEach((data)=>{
                 if(data instanceof Element){
@@ -31,10 +32,10 @@ function Timeline () {
     let [width, setWidth] = useState(0);
     
     
-
-
     useEffect(()=>{
         function event(){
+            let y = document.body.offsetWidth;
+            setYSize(y);
             let BoxElement : HTMLElement | null = document.querySelector(".Tl-slideBox");
             let Element : HTMLElement | null = document.querySelector(".Tl-slide");
             if(BoxElement){
@@ -48,17 +49,16 @@ function Timeline () {
         window.addEventListener("resize",event);
 
         return ()=> { window.removeEventListener("resize",event)}
-    },[])
+    },[ySize])
     
 
-    let  now = useSelector((state :reduxType) => state.slideWidth);
+    let  now = useSelector((state : {slideWidth : number}) => state.slideWidth);
 
     function slideMove(move : string) : void {
         let BoxElement : HTMLElement | null = document.querySelector(".Tl-slideBox");
         let Element : HTMLElement | null = document.querySelector(".Tl-slide");
         let moveValue  = 165;
         if(BoxElement){
-            console.log("있다");
             boxWidth = BoxElement.offsetWidth;
         }
 
@@ -67,23 +67,34 @@ function Timeline () {
             console.log(width -boxWidth);
             console.log(now);
             if(move === "R" && now < width - boxWidth){
-                console.log("오른쪽")
                 Element.style.transform = `translateX(-${now + moveValue}px)`
                 dispatch(sliding(now + moveValue))
-               
             }else if(move === "L" && now > 0 ) {
-                console.log("왼쪽")
                 Element.style.transform = `translateX(-${now - moveValue}px)`
                 dispatch(sliding(now - moveValue))
                 
             }
         }else{
-            console.log("아 왜 안되냐고");
+            
         }
        
 
     }
 
+
+    function selectModel(index : number){
+        let modelTag = document.querySelectorAll(".contentContainer")
+        dispatch(changeImg(index));
+        if(modelTag instanceof NodeList){
+            for(let i = 0; i < modelTag.length; i++){
+                if(i === index){
+                    modelTag[i].classList.add("selectModel");
+                }else{
+                    modelTag[i].classList.remove("selectModel");
+                }
+            }
+        }
+    }
 
 
 
@@ -91,9 +102,8 @@ function Timeline () {
     //style 속성을 사용하기 위해선 타입을 HTMLElement로 지정해야 한다.
 
 
-    type reduxType = ReturnType<typeof store.getState>
-    let content = useSelector((state : reduxType) => state.slideContent);
-    let img = useSelector((state : reduxType) => state.slideImg);
+    let content = useSelector((state : {slideContent : number}) => state.slideContent);
+    let img = useSelector((state : {slideImg : number}) => state.slideImg);
 
     return <div className="Tl-wrap">
                 <div className="Tl-time">
@@ -116,7 +126,7 @@ function Timeline () {
                         <div key={index}  className="Tl-leftContent">
                                                             <div>
                                                             {data.modelTime.map((data,i) => 
-                                                                    <div key={i} className="contentContainer" onClick={()=>{dispatch(changeImg(i))}}>
+                                                                    <div key={i} className={`contentContainer ${i === 0 && "selectModel"}`} onClick={()=>{selectModel(i)}}>
                                                                         {/*모델명 */}
                                                                         <div className="Tl-modelTime">{data.name}</div>
                                                                          {/*모델설명 */}
