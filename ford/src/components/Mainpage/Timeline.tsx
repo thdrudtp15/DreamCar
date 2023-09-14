@@ -142,7 +142,7 @@ function Timeline () {
                              {data.modelTime.map((data,index)=>{
                                 return <div key={index}>{index === img && <div>{data.photo.map((data,index)=>{return <img key={index} src={data} className="modelImg" alt=""/>})}</div> }</div>
                              })}
-                        </div>      
+                        </div>     
                         <div style={{clear:"both"}}></div>                                              
                     </div>
                                                         )}
